@@ -1,0 +1,40 @@
+<html>
+<body>
+
+
+<form method="post" action="{% url 'trackingAction' %}">
+{% csrf_token %}
+
+
+{% for t in tracking %}
+
+<input type="hidden" name="id" value="{{t.id}}">
+
+{% endfor %}
+
+<table>
+
+
+
+<tr>
+<td>Discription</td>
+<td><textarea name="discription"  cols="8"  rows="2"></textarea></td>
+</tr>
+
+
+<tr>
+<td><input type="submit" value="Upload"></td>
+</tr>
+
+
+
+
+
+
+</table>
+
+
+
+</form>
+</body>
+</html>

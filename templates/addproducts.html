@@ -1,0 +1,75 @@
+<html>
+<body>
+
+
+<form method = "post" action ="{% url 'productAction' %}" enctype="multipart/form-data" >                          
+{% csrf_token %}
+
+
+<table>
+
+<tr>
+<td>Product Name</td>
+<td><input type="text" name="productname"></td>
+</tr>
+
+
+<tr>
+<td>Product Image</td>
+<td><input type="file" name="productimage"></td>
+</tr>
+
+<tr>
+<td>Product Price</td>
+<td><input type="text" name="productprice"></td>
+</tr>
+
+<tr>
+<td>Product details</td>
+<td><textarea name="productdetails"  cols"2"  rows"2"> </textarea></td>
+</tr>
+
+<tr>
+<td>Product Stock</td>
+<td><input type="text" name="productstock"></td>
+</tr>
+
+
+
+
+<tr>
+<td>Category</td>
+<td>
+<select name="category">
+<option value=" ">--select--</option>
+{% for c in categoryid %}
+<option value="{{c.id}}">
+{{c.name}}</option>
+{% endfor %}
+</select>
+</td>
+</tr>
+
+
+<tr>
+<td><input type="submit" value="Upload"></td>
+</tr>
+
+
+
+
+</table>
+
+
+</body>
+
+{% if messages %}
+	{% for msg in messages %}
+	<script>
+		alert('{{msg}}')
+	</script>
+	{% endfor %}
+{% endif %}
+
+
+</html>

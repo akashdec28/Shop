@@ -1,0 +1,44 @@
+<html>
+<body>
+<table>
+
+<tr>
+<th>Product Name</th>
+<th>Product Image</th>
+<th>Product Price</th>
+<th>Product Details</th>
+<th>Product Stock</th>
+</tr>
+
+<tr>
+{% for s in data %}
+
+<tr>
+<td>{{s.productname}}</td>
+<td><img src="{{s.productimage.url}}" height="100px"  width="100px" alt="no pic"></td>
+<td>{{s.productprice}}</td>
+<td>{{s.productdetails}}</td>
+<td>{{s.productstock}}</td>
+
+
+<td><a href="{% url 'addtocart' s.id %}"> Add to Cart </td>
+
+
+
+
+
+</tr>
+
+
+{% endfor %}
+
+</table>
+</body>
+{% if messages %}
+	{% for msg in messages %}
+	<script>
+		alert('{{msg}}')
+	</script>
+	{% endfor %}
+{% endif %}
+</html>

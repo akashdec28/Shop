@@ -1,0 +1,69 @@
+<html>
+<body>
+
+<form method="post" action="{% url 'updateproducts' %}" enctype="multipart/form-data" >
+{% csrf_token %}
+
+{% for s in update  %}
+
+<input type="hidden" name="id" value={{s.id}}>
+
+<table>
+<tr>
+<td>Product Name</td>
+<td><input type="text" value="{{s.productname}}" name="productname"></td>
+</tr>
+
+<tr>
+<td>Product Image</td>
+<td><img src="{{s.productimage.url}}" height="100px" width="100px" alt="no pic"></td>
+<td><input type="file" value="{{s.productimage}}" name="productimage"></td>
+</tr>
+
+<tr>
+<td>Product Price</td>
+<td><input type="text" value="{{s.productprice}}" name="productprice"></td>
+</tr>
+
+
+<tr>
+<td>Product Details</td>
+<td><textarea name="productdetails"  cols"2"  rows"2">{{s.productdetails}} </textarea></td>
+</tr>
+
+<tr>
+<td>Product Stock</td>
+<td><input type="text" value="{{s.productstock}}" name="productstock"></td>
+</tr>
+
+
+
+<tr>
+<td><input type="submit" value="Update"></td>
+</tr>
+
+
+
+
+
+</table>
+{% endfor %}
+</body>
+
+
+
+
+
+{% if messages %}
+	{% for msg in messages %}
+	<script>
+		alert('{{msg}}')
+	</script>
+	{% endfor %}
+{% endif %}
+
+
+
+
+
+</html>

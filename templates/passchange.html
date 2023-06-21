@@ -1,0 +1,35 @@
+<html>
+    <body>
+        <form method="post" action = "{% url 'checkpassAction' %}">
+            {%csrf_token%}
+
+            <input type="hidden" name="username" value="{{data}}">
+        
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="name"></td>
+            </tr>
+
+            <tr>
+                <td>Phone Number</td>
+                <td><input type="text" name="phonenumber"></td>
+            </tr>
+
+            <tr>
+                <td>Date of Birth</td>
+                <td><input type="text" name="dob"></td>
+            </tr>
+
+            <tr>
+                <td>Country</td>
+                <td><input type="text" name="country"></td>
+            </tr>
+
+
+            <tr>
+                <td><input type="submit" value="Check"></td>
+            </tr>
+        </table>
+    </body>
+</html>

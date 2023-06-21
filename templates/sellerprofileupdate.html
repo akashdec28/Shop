@@ -1,0 +1,92 @@
+<html>
+<body>
+
+<form method="post" action="{% url 'sellerupdateAction' %}" enctype="multipart/form-data">
+{% csrf_token %}
+
+{% for s in edit %}
+
+<input type="hidden" name="id" value="{{s.id}}">
+
+<table>
+
+<tr>
+<td>Name</td>
+<td><input type="text" value="{{s.name}}" name="name"></td>
+</tr>
+
+
+<tr>
+<td>Gender</td>
+<td>
+{% if s.gender ==  'Male' %}
+<input type="radio" name="gender" value="Male" checked="true">MALE
+<input type="radio" name="gender" value="Female">FEMALE
+<input type="radio" name="gender" value="Other">OTHER
+
+
+{% elif s.gender == 'Female' %}
+<input type="radio" name="gender" value="Male" >MALE
+<input type="radio" name="gender"  value="Female" checked="true">FEMALE
+<input type="radio" name="gender" value="Other">OTHER
+
+{% else %}
+<input type="radio" name="gender" value="Male" >MALE
+<input type="radio" name="gender"  value="Female">FEMALE
+<input type="radio" name="gender" value="Other" checked="true">OTHER
+
+
+{% endif %}
+
+</td>
+</tr>
+
+<tr>
+<td>Date of Birth</td>
+<td><input type="text" value="{{s.dob}}" name="dob"></td>
+</tr>
+
+<tr>
+<td>Country</td>
+<td><input type="text" value="{{s.country}}" name="country"></td>
+</tr>
+
+<tr>
+<td>Phone Number</td>
+<td><input type="text" value="{{s.phonenumber}}" name="phonenumber"></td>
+</tr>
+
+<tr>
+<td>Address</td>
+<td><textarea name="address" cols"4" rows"4" >{{s.address}}</textarea></td>
+</tr>
+
+<tr>
+<td>Username</td>
+<td><input type="text" value="{{s.username}}" name="username"></td>
+</tr>
+
+<tr>
+<td>Password</td>
+<td><input type="text" value="{{s.password}}" name="password"></td>
+</tr>
+
+
+<tr>
+<td></td>
+<td><input type="text" value="{{s.phonenumber}}" name="phonenumber"></td>
+</tr>
+
+<tr>
+<td>File</td>
+<td><img src="{{s.file.url}}" height="100px" width="100px" alt="no pic"></td>
+<td><input type="file" value="{{s.file}}" name="file"></td>
+</tr>
+
+<td><input type="submit" value="Update"></td>
+
+</form>
+</table>
+{% endfor %}
+</body>
+</html>

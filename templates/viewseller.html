@@ -1,0 +1,56 @@
+<html>
+<body>
+<table>
+
+
+
+
+
+<tr>
+<th>Name<th>
+<th>Gender<th>
+<th>Date of Birth<th>
+<th>Country<th>
+<th>Phone Number<th>
+<th>Address<th>
+<th>Username<th>
+<th>Password<th>
+<th>File</th>
+<th>Status<th>
+</tr>
+
+
+
+{% for s in data %}
+
+
+<tr>
+<td>{{s.name}}</td>
+<td>{{s.gender}}</td>
+<td>{{s.dob}}</td>
+<td>{{s.country}}</td>
+<td>{{s.phonenumber}}</td>
+<td>{{s.address}}</td>
+<td>{{s.username}}</td>
+<td>{{s.password}}</td>
+<td><img src="{{s.file.url}}" height="100px"  width="100px" alt="no pic"></td>
+<td>{{s.status}}</td>
+
+
+{% if s.status == 'pending' %}
+<td><a href="{% url 'approve' s.id %}"> Approve</a></td>
+{% endif %}
+
+
+{% if s.status == 'pending' %}
+<td><a href="{% url 'reject' s.id %}"> Reject</a></td>
+{% endif %}
+
+</tr>
+
+
+
+{% endfor %}
+</table>
+</body>
+</html>

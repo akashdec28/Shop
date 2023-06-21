@@ -1,0 +1,99 @@
+<html>
+<body>
+
+
+<form method = "post" action = "{% url 'orderAction' %}" enctype="multipart/form-data">
+{% csrf_token %}
+
+
+<table>
+
+
+
+{% for c in data %}
+
+
+<tr>
+
+<tr>
+<td>Buyer ID</td>
+<td>{{c.buyerid_id}}</td>
+</tr>
+
+
+
+
+<tr>
+<td>Quantity</td>
+<td>{{c.quantity}}</td>
+</tr>
+
+
+
+
+<tr>
+<td>Total Price</td>
+<td>{{c.totalprice}}</td>
+</tr>
+
+
+<tr>
+<td>Product ID</td>
+<td>{{c.productid_id}}</td>
+</tr>
+
+
+
+<tr>
+<td>Product Name</td>
+<td>{{c.productid.productname}}</td>
+</tr>
+
+
+<tr>
+<td>Product Image</td>
+<td><img src="{{c.productid.productimage.url}}" height="100px"  width="100px" alt="no pic"></td>
+</tr>
+
+
+
+<tr>
+<td>Product Price</td>
+<td>{{c.productid.productprice}}</td>
+</tr>
+
+
+
+<td><a href="{% url 'deletecart' c.id %}"> Delete </td>
+
+
+<td><input type="checkbox" name="checkbox" value="{{c.id}}"></td>
+
+{% empty %}
+<td colspan="5">Nothing to display</td>
+
+{% endfor %}
+
+
+
+<tr>
+<td>Phone Number</td>
+<td><input type="text" name="phonenumber"></td>
+</tr>
+
+
+
+<tr>
+<td>Shipping Address</td>
+<td><textarea name="shippingaddress" cols="4" rows="4"></textarea></td>
+</tr>
+
+
+<td><input type="submit" value="Place Order"></td>
+
+
+
+</form>
+</table>
+</body>
+</html>

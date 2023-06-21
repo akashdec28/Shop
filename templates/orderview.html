@@ -1,0 +1,66 @@
+<html>
+<body>
+
+
+
+<table>
+
+{% for o in data %}
+
+
+<tr>
+<td>Order ID<td>
+<td>{{o.id}}</td>
+</tr>
+
+
+
+<tr>
+<td>Shipping Address</td>
+<td>{{o.shippingaddress}}</td>
+</tr>
+
+
+
+<tr>
+<td>Phone Number</td>
+<td>{{o.phonenumber}}</td>
+</tr>
+
+
+
+
+<tr>
+<td>Date of Purchase</td>
+<td>{{o.date}}</td>
+</tr>
+
+
+<tr>
+<td>Time of Purchase</td>
+<td>{{o.time}}</td>
+</tr>
+
+
+
+<td><a href="{% url 'orderdetails' o.id %}"> Details </td>
+
+    <td><a href="{% url 'deleteorderview' o.id %}"> Delete </td>
+
+
+
+{% endfor %}
+
+
+
+
+</table>
+</body>
+{% if messages %}
+	{% for msg in messages %}
+	<script>
+		alert('{{msg}}')
+	</script>
+	{% endfor %}
+{% endif %}
+</html>

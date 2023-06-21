@@ -1,0 +1,82 @@
+<html>
+<body>
+
+<form method="post" action="{% url 'buyerupdateAction' %}">
+{% csrf_token %}
+
+{% for b in edit %}
+
+<input type="hidden" name="id" value="{{b.id}}">
+
+<table>
+
+<tr>
+<td>Name</td>
+<td><input type="text" value="{{b.name}}" name="name"></td>
+</tr>
+
+
+<tr>
+<td>Gender</td>
+
+<td>
+
+{% if b.gender ==  'Male' %}
+<input type="radio" name="gender" value="Male" checked>MALE
+<input type="radio" name="gender" value="Female">FEMALE
+
+
+{% else %}
+<input type="radio" name="gender" value="Male" >MALE
+<input type="radio" name="gender"  value="Female" checked>FEMALE
+
+
+{% endif %}
+
+</td>
+</tr>
+
+<tr>
+<td>Date of Birth</td>
+<td><input type="text" value="{{b.dob}}" name="dob"></td>
+</tr>
+
+<tr>
+<td>Country</td>
+<td><input type="text" value="{{b.country}}" name="country"></td>
+</tr>
+
+<tr>
+<td>Phone Number</td>
+<td><input type="text" value="{{b.phonenumber}}" name="phonenumber"></td>
+</tr>
+
+<tr>
+<td>Address</td>
+<td><textarea name="address"  cols"2"  rows"2">{{v.address}} </textarea></td>
+</tr>
+
+<tr>
+<td>Username</td>
+<td><input type="text" value="{{b.username}}" name="username"></td>
+</tr>
+
+<tr>
+<td>Name</td>
+<td><input type="password" value="{{b.password}}" name="password"></td>
+</tr>
+
+<td><input type="submit" value="Update"><td>
+
+
+
+</table>
+{% endfor %}
+</form>
+</body>
+
+
+
+
+
+</html>

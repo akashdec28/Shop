@@ -1,0 +1,32 @@
+<html>
+
+<body>
+
+    <form method="post" action="{% url 'quickpasschangeAction' %}">
+        {%csrf_token%}
+    <table>
+        <tr>
+            <td>Old Password</td>
+            <td><input type="text" name="oldpass"></td>
+        </tr>
+        <tr>
+            <td>New Password</td>
+            <td><input type="text" name="newpass"></td>
+        </tr>
+        <tr>
+            <td>Confirm Password</td>
+            <td><input type="text" name="cnfpass"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Change Password"></td>
+        </tr>
+    </table>
+</body>
+{% if messages %}
+	{% for msg in messages %}
+	<script>
+		alert('{{msg}}')
+	</script>
+	{% endfor %}
+{% endif %}
+</html>

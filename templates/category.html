@@ -1,0 +1,30 @@
+<html>
+<body>
+
+<form method = "post" action="{% url 'nameAction' %}">
+{% csrf_token %}
+
+<table>
+
+<tr>
+<td>Name</td>
+<td><input type="text" name="name"></td>
+</tr>
+
+<tr>
+<td><input type="submit" value="Submit"></td>
+</tr>
+
+</table>
+</form>
+</body>
+
+{% if messages %}
+	{% for msg in messages %}
+	<script>
+		alert('{{msg}}')
+	</script>
+	{% endfor %}
+{% endif %}
+
+</html>

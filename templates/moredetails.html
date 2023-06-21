@@ -1,0 +1,67 @@
+<html>
+<body>
+
+
+
+
+
+<table>
+
+<tr>
+<th>Total Price</th>
+<th>Quantity</th>
+<th>Buyer Name</th>
+<th>Product Image</th>
+<th>Product Name</th>
+<th>Seller ID</th>
+</tr>
+{% for y in data %}
+<tr>
+<td>{{y.totalprice}}</td>
+<td>{{y.quantity}}</td>
+<td>{{y.buyerid.name}}</td>
+<td><img src="{{y.productid.productimage.url}}" height="100px"  width="100px" alt="no pic"></td>
+<td>{{y.productid.productname}}</td>
+<td>{{y.productid.sellerid_id}}</td>
+</tr>
+
+
+<tr>
+{% endfor %}
+{% for y in details %}
+{% if y.status == 'pending' %}
+
+<td><a href="{% url 'approveorder' y.id %}"> Approve Order </a></td>
+
+{% endif %}
+
+
+{% if y.status == 'pending' %}
+
+<td><a href="{% url 'rejectorder' y.id %}"> Reject Order </a></td>
+
+{% endif %}
+
+
+
+
+
+{% if y.status == 'Approved' %}
+
+<td><a href="{% url 'tracking' y.id %}"> Update Tracking Details </a></td>
+
+{% endif %}
+
+
+
+
+</tr>
+
+
+</table>
+
+{% endfor %}
+
+
+</body>
+</html>

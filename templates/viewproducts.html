@@ -1,0 +1,48 @@
+<html>
+<body>
+
+<table>
+
+
+<tr>
+<th>Product Name</th>
+<th>Product Image</th>
+<th>Product Price</th>
+<th>Product Details</th>
+<th>Product Stock</th>
+<th>Category</th>
+<th>Seller ID</th>
+</tr>
+
+
+{% for s in data %}
+
+<tr>
+<td>{{s.productname}}</td>
+<td><img src="{{s.productimage.url}}" height="100px"  width="100px" alt="no pic"></td>
+<td>{{s.productprice}}</td>
+<td>{{s.productdetails}}</td>
+<td>{{s.productstock}}</td>
+<td>{{s.categoryid_id}}</td>
+<td>{{s.sellerid_id}}</td>
+
+
+<td><a href="{% url 'delete' s.id %}"> Delete </td>
+
+<td><a href="{% url 'update' s.id %}"> Update </td>
+
+</tr>
+{% endfor %}
+
+
+
+
+</table>
+</body>
+
+
+
+
+
+
+</html>

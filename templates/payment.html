@@ -1,0 +1,43 @@
+<html>
+
+<body>
+    <form method="post" action="{% url 'payment' %}">
+        {% csrf_token %}
+
+        
+
+       
+        
+        <table>
+            {% for p in data %}
+            <td><input type="hidden" name="ordid" value="{{p.orderid.id}}"></td>
+            <tr>
+                <td>Card Number</td>
+                <td><input type="text" name="cardnumber"></td>
+            </tr>
+
+            <tr>
+                <td>Card Name</td>
+                <td><input type="text" name="cardname"></td>
+            </tr>
+
+            <tr>
+                <td>CVD</td>
+                <td><input type="text" name="cvd"></td>
+            </tr>
+
+            <tr>
+                <td>Expiry Date</td>
+                <td><input type="text" name="expirydate"></td>
+            </tr>
+
+            <tr>
+                <td><input type="submit" value="paid"></td>
+            </tr>
+            {% endfor %}
+        </table>
+      
+    </form>
+</body>
+
+</html>

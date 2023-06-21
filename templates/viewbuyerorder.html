@@ -1,0 +1,39 @@
+<html>
+<body>
+
+
+{% for l in order %}
+
+
+
+
+<table>
+
+<tr>
+<th>Order ID</th>
+<th>Date</th>
+<th>Time</th>
+</tr>
+
+<tr>
+<td>{{l.id}}</td>
+<td>{{l.date}}</td>
+<td>{{l.time}}</td>
+</tr>
+
+
+
+<td><a href="{% url 'moredetails' l.id %}"> Details </td>
+
+
+</table>
+
+
+{% endfor %}
+
+
+
+
+
+</body>
+</html>

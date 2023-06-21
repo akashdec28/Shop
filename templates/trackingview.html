@@ -1,0 +1,31 @@
+<html>
+<body>
+
+
+
+<table>
+
+{% for h in track %}
+
+<tr>
+    <td>Date of Arrival</td>
+    <td>{{h.date}}</td>
+</tr>
+    
+    
+<tr>
+    <td>Time of Arrival</td>
+    <td>{{h.time}}</td>
+</tr>
+
+
+<tr>
+    <td>Discription</td>
+    <td>{{h.discription}}</td>
+    </tr>
+
+{% endfor %}
+
+</table>
+</body>
+</html>

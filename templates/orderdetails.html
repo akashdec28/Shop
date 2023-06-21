@@ -1,0 +1,52 @@
+<html>
+<body>
+<table>
+
+{% for x in data %}
+
+
+<tr>
+<td>Buyer ID</td>
+<td>{{x.buyerid_id}}</td>
+</tr>
+
+
+
+<tr>
+<td>Shipping Address</td>
+<td>{{x.shippingaddress}}</td>
+</tr>
+
+<tr>
+<td>Phone Number</td>
+<td>{{x.phonenumber}}</td>
+</tr>
+
+
+
+
+{% if x.status == 'pending' %}
+<a href="{% url 'cancelorder' x.id %}"> Cancel your Order </a>
+    {% endif %}
+    {% if x.status == 'Approved' %}
+    <td><a href="{% url 'trackyourorder' x.id %}"> Track Your Order </a></td>
+        {% endif %}
+
+
+
+
+{% endfor %}
+
+{% for s in od %}
+<tr>
+    <td>{{s.productid.productname}}</td>
+    <td><img src="{{s.productid.productimage.url}}" height="100px" width="100px"></td>
+    <td>{{s.productid.productprice}}</td>
+
+    </tr>
+{% endfor %}
+
+
+</table>
+</body>
+</html>

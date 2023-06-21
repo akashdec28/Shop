@@ -1,0 +1,102 @@
+<html>
+
+<script src="/static/jquery-1.8.3.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#quantity").change(function(){
+			var quantity=parseInt($("#quantity").val());
+			var price=parseInt($("#price").val());
+			var totalprice=quantity*price;
+			$('#totalprice').val(totalprice)
+
+			})
+
+			})
+	</script>
+
+
+
+
+
+
+
+
+<body>
+
+<form method="post" action="{% url 'cartAction' %}" enctype="multipart/form-data">
+{% csrf_token %}
+
+
+<table>
+
+{% for s in data %}
+
+<tr>
+<td>Product Name</td>
+<td>{{s.productname}}</td>
+</tr>
+
+
+<tr>
+<td>Product Image</td>
+<td><img src="{{s.productimage.url}}" height="100px"  width="100px" alt="no pic"></td>
+</tr>
+
+
+
+<tr>
+<td>Product Price</td>
+<td>{{s.productprice}}</td>
+</tr>
+
+
+
+
+<input type="hidden" name="id" value="{{s.id}}">
+
+<input type="hidden" name="price" value="{{s.productprice}}" id="price">
+
+<input type="hidden" name="stock" value="{{s.productstock}}">
+
+
+
+
+
+
+
+
+
+
+<tr>
+<td>Phone Number</td>
+<td><input type="text" name="phonenumber"></td>
+</tr>
+
+<tr>
+<td>Quantity</td>
+<td><input type="text" name="quantity" id="quantity"></td>
+</tr>
+
+<tr>
+<td>Shipping Address</td>
+<td><textarea name="shippingaddress" cols="4" rows="4"> </textarea></td>
+</tr>
+
+<tr>
+<td>Total Price</td>
+<td><input type="text" name="totalprice" id="totalprice" readonly="true"></td>
+</tr>
+
+
+
+<tr>
+<td><input type="submit" value="Next"></td>
+</tr>
+
+
+</form>
+
+{% endfor %}
+</table>
+</body>
+</html>
